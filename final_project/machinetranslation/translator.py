@@ -1,4 +1,3 @@
-import json
 import os
 
 from ibm_watson import LanguageTranslatorV3
@@ -18,24 +17,22 @@ Language_translator = LanguageTranslatorV3(
 
 Language_translator.set_service_url(URL)
 
-def englishToFrench(englishText):
-    if englishText is '':
-        frenchText = ''
+def english_to_french(english_text):
+    if english_text is '':
+        french_text = ''
     else:
         translation = Language_translator.translate(
-            text=englishText,
+            text=english_text,
             model_id='en-fr').get_result()
-        frenchText = translation['translations'][0]['translation']   
-    
-    return frenchText
+        french_text = translation['translations'][0]['translation']
+    return french_text
 
-def frenchToEnglish(frenchText):
-    if frenchText is '':
-        englishText = ''
+def french_to_english(french_text):
+    if french_text is '':
+        english_text = ''
     else:
         translation = Language_translator.translate(
-            text=frenchText,
+            text=french_text,
             model_id='fr-en').get_result()
-        englishText = translation['translations'][0]['translation']   
-    
-    return englishText
+        english_text = translation['translations'][0]['translation']
+    return english_text
